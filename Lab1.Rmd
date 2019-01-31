@@ -1,7 +1,7 @@
 ---
 title: "Lab1"
 author: "Mike Loranty"
-date: "1/31/2019"
+date: "02/01/2019"
 output: html_document
 ---
 
@@ -9,24 +9,44 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-## Introduction to R
+## 1. Introduction to R
 
 R is a powerful set of tools for manipulating, analyzing, and visulaizing data. These tools are open source, which means that they are and always will be free to use, and they are developed by a worldwide community of users. The R programming language is at the core of these tools. Using the R language you can write commands that will tell your computer what you want it to do with your data. While this may seem a bit daunting there are a number of advantages associated with using tools like R to work with data, instead of using spreadhseet programs where you point and click, for example. In particular you can perform complex calculatation with large amounts of data very quickly, and more importanly you can save a record of your commands to make everything you do transparent and reproducable. This is very important in science! 
 
-We can use R much like a calculator. 
+We can use R much like a calculator. Type a mathematical expression in the RStudio console, and R will return the answer. Here are a few examples (note that the answers are preceded by ##)
 
-```{r}
-
-# this is a comment
+```{r, collapse = TRUE}
 2+8
 
 4*13
+
+342-77
+```
+
+If you type a command that R doesn't recognize it will return an error. This means that the computer doesn't understand the commands you are giving it. 
+
+```{r, error=TRUE, collapse = TRUE}
+2 % 8
+```
+
+We can use an R script to keep a record of our calculations and any other things we do in R. A script is essentially a text file with all of our commands in it. To make a script in RStudio click on File -> New File -> R Script. By default this will open in the upper lefthand corner of RStudio, above the console. It's a good idea to save your script to your folder on the network drive before you start working. 
+
+Now you can type commands in your script and have a record of what we are doing. Note that commands will not execute after you hit enter, instead your curser will just go to the next line. In order to execute a command you should press CTRL ENTER while your curser is on that line. You can also copy and past commands into the console, or highlight one or more lines and press CTRL ENTER to execute all commands on those lines. 
+
+In an R script a hashtag `#` tells R to ignore that particular line. This is called commenting, and it is useful for leaving notes for yourself and others in your script. 
+
+## 2. Vectors and Objects
+We can create a *vector*, or one-dimensional group of numbers using the `:` symbol. 
+
+```{r, collapse = TRUE}
+# the next line will create a vector with all of the numbers from 35 to 85
+35:85
 ```
 
 
 
-## Functions in R
-There are a wide variety of functions available to use in R. Functions are followed by parentheses, and you typically write and *argument* inside the parentheses. For example, imagine that we have a vector of numbers from 1 to 20, and we want to fund the sum of all these numbers. It turns out there is a `sum` function, and if we supply our vector as the argument R will calculate the sum.
+## 3. Functions in R
+There are a wide variety of functions available to use in R. Functions generally perform some sort of mathematical operation, and can be fairly sophisticated. Functions are followed by parentheses, and you typically write and *argument* inside the parentheses. For example, imagine that we have a vector of numbers from 1 to 20, and we want to fund the sum of all these numbers. It turns out there is a `sum` function, and if we supply our vector as the argument R will calculate the sum.
 
 ```{r}
 v <- 1:20
