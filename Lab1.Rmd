@@ -1,0 +1,43 @@
+---
+title: "Lab1"
+author: "Mike Loranty"
+date: "1/31/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Introduction to R
+
+R is a powerful set of tools for manipulating, analyzing, and visulaizing data. These tools are open source, which means that they are and always will be free to use, and they are developed by a worldwide community of users. The R programming language is at the core of these tools. Using the R language you can write commands that will tell your computer what you want it to do with your data. While this may seem a bit daunting there are a number of advantages associated with using tools like R to work with data, instead of using spreadhseet programs where you point and click, for example. In particular you can perform complex calculatation with large amounts of data very quickly, and more importanly you can save a record of your commands to make everything you do transparent and reproducable. This is very important in science! 
+
+We can use R much like a calculator. 
+
+```{r}
+
+# this is a comment
+2+8
+
+4*13
+```
+
+
+
+## Functions in R
+There are a wide variety of functions available to use in R. Functions are followed by parentheses, and you typically write and *argument* inside the parentheses. For example, imagine that we have a vector of numbers from 1 to 20, and we want to fund the sum of all these numbers. It turns out there is a `sum` function, and if we supply our vector as the argument R will calculate the sum.
+
+```{r}
+v <- 1:20
+
+sum(v)
+```
+
+This is convenient, but you may be asking how do I know what functions exist and what the arguments are? For that we can use the help function in R. If you know which function you want to use you can see the documentation in the help window by typing a question mark followed by the function name in the console 
+```{r}
+?sum
+```
+
+
+## Reading in Data
