@@ -11,7 +11,7 @@
 
 <meta name="author" content="Mike Loranty" />
 
-<meta name="date" content="2019-02-01" />
+<meta name="date" content="2019-02-08" />
 
 <title>GEOG 338 Lab1</title>
 
@@ -187,7 +187,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">GEOG 338 Lab1</h1>
 <h4 class="author"><em>Mike Loranty</em></h4>
-<h4 class="date"><em>02/01/2019</em></h4>
+<h4 class="date"><em>02/08/2019</em></h4>
 
 </div>
 
@@ -220,9 +220,9 @@ sum(v)
 <p>By now it should be apparent that all of these tools are very powerful, but you may be wondering how you can work with your own data in R. The most common way to bring data into R is to import a spreadsheet, and there are a number of functions for that. Let’s use the <code>read.csv</code> function to import a data set. Use the help function to find out what this function does, and what the arguments are.</p>
 <p>We’ll use a dataset of air temperature from one of my research sites in Siberia. Click the following link to see the data on the Arctic Data Center web page. <a href="https://arcticdata.io/catalog/view/doi:10.18739/A2S46H57S" class="uri">https://arcticdata.io/catalog/view/doi:10.18739/A2S46H57S</a></p>
 <p>To start let’s look at the <em>Air_Temp.csv</em> data set. You might be able to figure out what this is, but let’s click the ‘More info’ link. This will give us information about the data in the file, the <em>Attribute Information</em> section is especially important. What does this tell us?</p>
-<p>OK, now let’s read the data into R. Paste the link from the <em>Online Distribution Info</em> into the read.csv function, and set the header argument to True.</p>
+<p>OK, now let’s read the data into R. Right click on the <em>Download</em> button and select <em>Copy Link Address</em> into the read.csv function, and set the header argument to True.</p>
 <p>What does header = T mean? Should we create an object here? Why or why not?</p>
-<pre class="r"><code>t_air &lt;- read.csv(&quot;https://cn.dataone.org/cn/v2/resolve/urn:uuid:3e962856-7ece-4ff8-870a-82511c31c974&quot;,
+<pre class="r"><code>t_air &lt;- read.csv(&quot;https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A3e962856-7ece-4ff8-870a-82511c31c974&quot;,
                    header = T)</code></pre>
 <p>OK, now we should see our <em>t_air</em> object in the Environment pane. Let’s take a look at the first few rows of our data set using the <code>head</code> function.</p>
 <pre class="r"><code>head(t_air)
@@ -267,18 +267,36 @@ max(t_air$Temp, na.rm = T)
 
 mean(t_air$Temp, na.rm = T)
 ## [1] -1.436316</code></pre>
-<p>Much better.</p>
+<p>Much better. What did we do differently here?</p>
+<p><strong>Matrix Notation and Subsetting</strong><br />
+We can use brackets to specify rows and columns in a matrix or dataframe. For example let’s look at the value in the first row of the first column in our temperature data.</p>
+<pre class="r"><code>t_air[1,1]
+## [1] 181</code></pre>
+<p>Now let’s try the 40th row of the 3rd column.</p>
+<pre class="r"><code>t_air[40,3]
+## [1] 14</code></pre>
+<p>We can use these brackets to subset our data by rows or columns. And we can use logical statements to subset our data by attributes. For example what if we want only data from the high-density site.</p>
+<pre class="r"><code>t_hd &lt;- t_air[t_air$site == &quot;hd&quot;,]
+head(t_hd)
+##   doy year hour Temp sensorZ sensorLoc site
+## 1 181 2016 18.5 14.8     700 overstory   hd
+## 2 181 2016 19.0 14.3     700 overstory   hd
+## 3 181 2016 19.5 13.4     700 overstory   hd
+## 4 181 2016 20.0 12.3     700 overstory   hd
+## 5 181 2016 20.5 11.6     700 overstory   hd
+## 6 181 2016 21.0 11.3     700 overstory   hd</code></pre>
 </div>
 <div id="homework-assignment" class="section level2">
 <h2>5. Homework Assignment</h2>
-<p>OK, now that we know some of the basics of R let’s see if we can apply it to things we’ve been learning.</p>
+<p>OK, now that we know some of the basics of R let’s see if we can apply it to things we’ve been learning in class.</p>
 <p>Your homework is to create a script that does the following things:</p>
 <ol style="list-style-type: decimal">
-<li>from the same data webpage load the <em>net radiation</em> data into R</li>
-<li>convert the downward facing longwave radiation data to temperature using the Stefan-Boltzman equation</li>
-<li>calculate the minimum, maximum, and average radiometric land surface temperature</li>
+<li>From the same data webpage load the <em>net radiation</em> data into R</li>
+<li>Convert the downward facing longwave radiation data to temperature using the Stefan-Boltzman equation</li>
+<li>Calculate the minimum, maximum, and average radiometric land surface temperature</li>
+<li>Use the <code>which</code> function to create two new objects (dataframes) that include only data from sensors mounted at 8m height from the high- and low-density sites. Calculate the minimum, maximum, and average radiometric land surface temperature for each site.</li>
 </ol>
-<p>Save the script as ‘lastname_lab1.R’ in your lab1 folder on the network.</p>
+<p>Save the script as ‘lastname_lab1.R’ in your lab1 folder on the network by next Wednesday.</p>
 </div>
 
 
