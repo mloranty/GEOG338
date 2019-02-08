@@ -127,7 +127,7 @@ OK, now that we know some of the basics of R let's see if we can apply it to thi
 Your homework is to create a script that does the following things: 
 
 1.   From the same data webpage load the *net radiation* data into R
-2.   Convert the downward facing longwave radiation data to temperature using the Stefan-Boltzman equation
+2.   Convert the downward facing longwave radiation data to temperature using the Stefan-Boltzman equation. (Use an effective emissivity of 0.96, and get the Boltzman constant from your text book)
 3.   Calculate the minimum, maximum, and average radiometric land surface temperature
   
   
