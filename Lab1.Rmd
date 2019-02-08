@@ -129,9 +129,9 @@ Your homework is to create a script that does the following things:
 1.   From the same data webpage load the *net radiation* data into R
 2.   Convert the downward facing longwave radiation data to temperature using the Stefan-Boltzman equation
 3.   Calculate the minimum, maximum, and average radiometric land surface temperature
-4.   Subset the data set to include only data from the high-density site at 8m height. Calculate the minimum, maximum, and average radiometric land surface temperature for this data only.  
   
-Save the script as 'lastname_lastname_lab1.R' in your lab1 folder on the network by next Wednesday. 
+  
+Save the script as 'lastname_lastname_lab1.R' in your lab1 folder on the network by next Friday. 
 
 
 
