@@ -1,0 +1,81 @@
+---
+title: "Lab2"
+author: "Mike Loranty"
+date: "2/15/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+We'll continue today using data from Siberia archived at the Arctic Data Center: https://arcticdata.io/catalog/view/doi:10.18739/A2S46H57S 
+
+Let's start again by looking at air temperature. 
+```{r}
+t_air <- read.csv("https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A3e962856-7ece-4ff8-870a-82511c31c974",
+                   header = T)
+```
+
+**Matrix Notation and Subsetting**  
+We can use brackets to specify rows and columns in a matrix or dataframe. For example let's look at the value in the first row of the first column in our temperature data. 
+
+```{r, collapse = T}
+t_air[1,1]
+```
+
+Now let's try the 40th row of the 3rd column. 
+
+```{r, collapse = T}
+t_air[40,3]
+```
+
+We can use these brackets to subset our data by rows or columns. And we can use logical statements to subset our data by attributes. For example what if we want only data from the high-density site. 
+
+```{r, collapse = T}
+t_hd <- t_air[t_air$site == "hd",]
+head(t_hd)
+```
+ 
+It is even possible to combine multiple statements to do things like create a subset of data from the low-density site from 2017. In this case we use the `&` to specify select records where the `site` attribute is equal to "hd", *AND* `year` is equal to 2017. 
+
+```{r, collapse = T}
+t_ld <- t_air[t_air$site == "hd" & t_air$year == 2017,]
+head(t_ld)
+```
+
+Also we can use other logical operators
+
+      <   less than
+      <=  less than or equal to
+      >   greater than 
+      >=  greater than or equal to
+      ==  exactly eual to
+      !=  not equal to
+      !x  not x 
+      x|y x or y
+      x&y x and y
+      
+      
+For our assignment this week we will continue to work on data manipulation skills. You will be working in pairs this week. 
+
+1. Read in the v_swc.csv data file from the Arctic Data Center webpage. 
+
+2. Create subsets for the high- and low-density study sites. 
+
+3. Calculate the mean soil moisture for each site in July 2016 and July 2017. Note you will need to choose a specific depth here, as the are multiple measurement depths. 
+
+4. In addition to your calculations from step 3, provide a short description of a) what depth(s) you chose and why, and b) what patterns do you observe in the data? Is one site consistently wetter than the other? How does soil moisture change from your to year? What do you think might cause these difference?
+
+Save your solutions as a single R script on your network folder 'lastname_lastname_lab2.R' in your lab folder on the network by next Friday.
+
+
+
+
+
+
+
+
+
+
+
