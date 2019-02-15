@@ -13,8 +13,7 @@ We'll continue today using data from Siberia archived at the Arctic Data Center:
 
 Let's start again by looking at air temperature. 
 ```{r}
-t_air <- read.csv("https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A3e962856-7ece-4ff8-870a-82511c31c974",
-                   header = T)
+t_air <- read.csv("https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A3e962856-7ece-4ff8-870a-82511c31c974",header = T)
 ```
 
 **Matrix Notation and Subsetting**  

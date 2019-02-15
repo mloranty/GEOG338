@@ -193,8 +193,7 @@ $(document).ready(function () {
 
 <p>We’ll continue today using data from Siberia archived at the Arctic Data Center: <a href="https://arcticdata.io/catalog/view/doi:10.18739/A2S46H57S" class="uri">https://arcticdata.io/catalog/view/doi:10.18739/A2S46H57S</a></p>
 <p>Let’s start again by looking at air temperature.</p>
-<pre class="r"><code>t_air &lt;- read.csv(&quot;https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A3e962856-7ece-4ff8-870a-82511c31c974&quot;,
-                   header = T)</code></pre>
+<pre class="r"><code>t_air &lt;- read.csv(&quot;https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A3e962856-7ece-4ff8-870a-82511c31c974&quot;,header = T)</code></pre>
 <p><strong>Matrix Notation and Subsetting</strong><br />
 We can use brackets to specify rows and columns in a matrix or dataframe. For example let’s look at the value in the first row of the first column in our temperature data.</p>
 <pre class="r"><code>t_air[1,1]
