@@ -29,11 +29,6 @@ Let's start again by looking at air temperature.
 ```{r, collapse = T}
 # read in our air temperature data
 t_air <- read.csv("https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A3e962856-7ece-4ff8-870a-82511c31c974",header = T)
-
-
-
-
-
 ```
 
 Today we are going to use several functions in the *lubridate* package to work with the dates in our data. First we need to combine all of the date and time attributes into a single character vector. In addition we need to separate out the hours and minutues. We can use the `paste` function to combine the year, doy, hour, and minute. Remember R will operate on entire vectors. Why do we use the `floor` function, what does it do? 
@@ -59,16 +54,21 @@ t_air$month <- month(t_air$dt)
 
 ```
 
-Now we can use the functions from the dplyr package to aggregate our date to daily and monthly values. We'll be using a new operator in 
+Now we can use the functions from the dplyr package to aggregate our date to monthly values. In addition to these new functions, we'll be using a new operator `%>%` to send the output from one command right into the next, this is called *piping*.
 
-```{r}
-
+```{r, collapse = T}
+# create a new object called t_month that is identical to our t_air dataframe and pipe it to the next line
 t_month <- t_air %>%
+
+# group the data by year, month, site, and sensor height, and pipe to the next line  
   group_by(year,month,site,sensorZ) %>%
-  summarize(t_mean = mean(Temp),
-            t_sd = sd(Temp))
+  
+# summarize data - calculate the mean and standard deviation for number of observations for each month
+  summarize(t_mean = mean(Temp,na.rm=T),
+            t_sd = sd(Temp,na.rm=T),
+            n_obs <- n())
 
-
+# check out the new data frame
 head(t_month)
 ```
 

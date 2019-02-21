@@ -200,8 +200,7 @@ library(lubridate)</code></pre>
 <p>Now we have these packages loaded in memory in R. We’ll continue today using data from Siberia archived at the Arctic Data Center: <a href="https://arcticdata.io/catalog/view/doi:10.18739/A2S46H57S" class="uri">https://arcticdata.io/catalog/view/doi:10.18739/A2S46H57S</a></p>
 <p>Let’s start again by looking at air temperature.</p>
 <pre class="r"><code># read in our air temperature data
-t_air &lt;- read.csv(&quot;https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A3e962856-7ece-4ff8-870a-82511c31c974&quot;,header = T)
-</code></pre>
+t_air &lt;- read.csv(&quot;https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A3e962856-7ece-4ff8-870a-82511c31c974&quot;,header = T)</code></pre>
 <p>Today we are going to use several functions in the <em>lubridate</em> package to work with the dates in our data. First we need to combine all of the date and time attributes into a single character vector. In addition we need to separate out the hours and minutues. We can use the <code>paste</code> function to combine the year, doy, hour, and minute. Remember R will operate on entire vectors. Why do we use the <code>floor</code> function, what does it do?</p>
 <pre class="r"><code># create a character vector with date and time information
 d &lt;- paste(t_air$year,t_air$doy,floor(t_air$hour),(t_air$hour-floor(t_air$hour))*60, sep = &quot;_&quot;)
@@ -222,24 +221,30 @@ head(t_air$dt)
 
 # use the month function to create a month variable
 t_air$month &lt;- month(t_air$dt)</code></pre>
-<p>Now we can use the functions from the dplyr package to aggregate our date to daily and monthly values. We’ll be using a new operator in</p>
-<pre class="r"><code>t_month &lt;- t_air %&gt;%
+<p>Now we can use the functions from the dplyr package to aggregate our date to monthly values. In addition to these new functions, we’ll be using a new operator <code>%&gt;%</code> to send the output from one command right into the next, this is called <em>piping</em>.</p>
+<pre class="r"><code># create a new object called t_month that is identical to our t_air dataframe and pipe it to the next line
+t_month &lt;- t_air %&gt;%
+
+# group the data by year, month, site, and sensor height, and pipe to the next line  
   group_by(year,month,site,sensorZ) %&gt;%
-  summarize(t_mean = mean(Temp),
-            t_sd = sd(Temp))
+  
+# summarize data - calculate the mean and standard deviation for number of observations for each month
+  summarize(t_mean = mean(Temp,na.rm=T),
+            t_sd = sd(Temp,na.rm=T),
+            n_obs &lt;- n())
 
-
-head(t_month)</code></pre>
-<pre><code>## # A tibble: 6 x 6
+# check out the new data frame
+head(t_month)
+## # A tibble: 6 x 7
 ## # Groups:   year, month, site [6]
-##    year month site  sensorZ t_mean  t_sd
-##   &lt;int&gt; &lt;dbl&gt; &lt;fct&gt;   &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;
-## 1  2016     6 hd        700  10.3   3.51
-## 2  2016     7 hd        700  12.0   5.41
-## 3  2016     7 ld        700  11.8   5.19
-## 4  2016     8 hd        700  12.6   5.69
-## 5  2016     8 ld        700  12.6   5.51
-## 6  2016     9 hd        700   4.55  5.28</code></pre>
+##    year month site  sensorZ t_mean  t_sd `n_obs &lt;- n()`
+##   &lt;int&gt; &lt;dbl&gt; &lt;fct&gt;   &lt;int&gt;  &lt;dbl&gt; &lt;dbl&gt;          &lt;int&gt;
+## 1  2016     6 hd        700  10.3   3.51             59
+## 2  2016     7 hd        700  12.0   5.41           1488
+## 3  2016     7 ld        700  11.8   5.19           1462
+## 4  2016     8 hd        700  12.6   5.69           1488
+## 5  2016     8 ld        700  12.6   5.51           1488
+## 6  2016     9 hd        700   4.55  5.28           1440</code></pre>
 
 
 
