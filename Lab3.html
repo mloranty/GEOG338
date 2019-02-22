@@ -197,11 +197,13 @@ $(document).ready(function () {
 <p>This downloads our packages, but now we need to load them into memory for our R session. We do this using the library command. In general it is good practice to load any packages you need in the first lines of your scripts.</p>
 <pre class="r"><code>library(dplyr)
 library(lubridate)</code></pre>
+<p>We can also use the help command to learn more about a package. Let’s look at the documentation for the <code>lubridate</code> package.</p>
+<pre class="r"><code>help(package = &quot;lubridate&quot;)</code></pre>
 <p>Now we have these packages loaded in memory in R. We’ll continue today using data from Siberia archived at the Arctic Data Center: <a href="https://arcticdata.io/catalog/view/doi:10.18739/A2S46H57S" class="uri">https://arcticdata.io/catalog/view/doi:10.18739/A2S46H57S</a></p>
 <p>Let’s start again by looking at air temperature.</p>
 <pre class="r"><code># read in our air temperature data
 t_air &lt;- read.csv(&quot;https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A3e962856-7ece-4ff8-870a-82511c31c974&quot;,header = T)</code></pre>
-<p>Today we are going to use several functions in the <em>lubridate</em> package to work with the dates in our data. First we need to combine all of the date and time attributes into a single character vector. In addition we need to separate out the hours and minutues. We can use the <code>paste</code> function to combine the year, doy, hour, and minute. Remember R will operate on entire vectors. Why do we use the <code>floor</code> function, what does it do?</p>
+<p>Today we are going to use several functions in the <em>lubridate</em> package to work with the dates in our data. First we need to combine all of the date and time attributes into a single character vector. In addition we need to separate out the hours and minutues. We can use the <code>paste</code> function to combine the year, doy, hour, and minute. Remember R will operate on entire vectors.</p>
 <pre class="r"><code># create a character vector with date and time information
 d &lt;- paste(t_air$year,t_air$doy,floor(t_air$hour),(t_air$hour-floor(t_air$hour))*60, sep = &quot;_&quot;)
 
@@ -209,6 +211,7 @@ d &lt;- paste(t_air$year,t_air$doy,floor(t_air$hour),(t_air$hour-floor(t_air$hou
 head(d)
 ## [1] &quot;2016_181_18_30&quot; &quot;2016_181_19_0&quot;  &quot;2016_181_19_30&quot; &quot;2016_181_20_0&quot; 
 ## [5] &quot;2016_181_20_30&quot; &quot;2016_181_21_0&quot;</code></pre>
+<p>Before going any further take a moment to figure out exactly what we did to create our new character vector with date and time information. What two new functions did we use? What were our inputs?</p>
 <p>Now we can use the <code>as_datetime</code> function to convert our character vector into a special kind of date object. Remember we use the <code>$</code> operator to add new variables (columns) to a dataframe.</p>
 <pre class="r"><code># convert our charcter vector to a date/time obejct and assign the output to a new variable in our dataframe. The format argument is where we tell R how the date is arranged.
 t_air$dt &lt;- as_datetime(d,format = &quot;%Y_%j_%H_%M&quot;)
@@ -221,7 +224,7 @@ head(t_air$dt)
 
 # use the month function to create a month variable
 t_air$month &lt;- month(t_air$dt)</code></pre>
-<p>Now we can use the functions from the dplyr package to aggregate our date to monthly values. In addition to these new functions, we’ll be using a new operator <code>%&gt;%</code> to send the output from one command right into the next, this is called <em>piping</em>.</p>
+<p>We used the <code>as_datetime</code> and <code>month</code> functions above. Now we can use the functions from the dplyr package to aggregate our date to monthly values. In addition to these new functions, we’ll be using a new operator <code>%&gt;%</code> to send the output from one command right into the next, this is called <em>piping</em>.</p>
 <pre class="r"><code># create a new object called t_month that is identical to our t_air dataframe and pipe it to the next line
 t_month &lt;- t_air %&gt;%
 
@@ -245,6 +248,14 @@ head(t_month)
 ## 4  2016     8 hd        700  12.6   5.69           1488
 ## 5  2016     8 ld        700  12.6   5.51           1488
 ## 6  2016     9 hd        700   4.55  5.28           1440</code></pre>
+<p>For our assignment this week we will continue to work on data manipulation skills. You will be working in pairs this week.</p>
+<ol style="list-style-type: decimal">
+<li><p>Read in the v_swc.csv data file from the Arctic Data Center webpage.</p></li>
+<li><p>Create subsets for the high- and low-density study sites.</p></li>
+<li><p>Calculate the mean soil moisture for each site in July 2016 and July 2017. Note you will need to choose a specific depth here, as the are multiple measurement depths.</p></li>
+<li><p>In addition to your calculations from step 3, provide a short description of a) what depth(s) you chose and why, and b) what patterns do you observe in the data? Is one site consistently wetter than the other? How does soil moisture change from your to year? What do you think might cause these difference?</p></li>
+</ol>
+<p>Save your solutions as a single R script on your network folder ‘lastname_lastname_lab2.R’ in your lab folder on the network by next Friday.</p>
 
 
 

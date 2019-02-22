@@ -8,6 +8,7 @@ output: html_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 This week we are going to continue learning how to manipulate and analyze our data. To do this we'll need to use a few new *packages*. Packages in R are groups of functions, typically designed for a specific purpose, that come with detailed documentation on how to use them, and often sampe data sets. For example there are packages designed to work with geospatial data, perform specific statistical tests, and many other things. Today we are going to use two packages called lubridate and dplyr that are useful for working with dates and manipulating data, respectively.
 
 In RStudio you can either install packages from using commands in the console, or using the Tools menu in the toolbar. We will use commands to do this: 
@@ -23,6 +24,12 @@ library(dplyr)
 library(lubridate)
 ```
 
+We can also use the help command to learn more about a package. Let's look at the documentation for the `lubridate` package. 
+
+```{r, eval = F}
+help(package = "lubridate")
+```
+
 Now we have these packages loaded in memory in R. We'll continue today using data from Siberia archived at the Arctic Data Center: https://arcticdata.io/catalog/view/doi:10.18739/A2S46H57S 
 
 Let's start again by looking at air temperature. 
@@ -31,7 +38,7 @@ Let's start again by looking at air temperature.
 t_air <- read.csv("https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A3e962856-7ece-4ff8-870a-82511c31c974",header = T)
 ```
 
-Today we are going to use several functions in the *lubridate* package to work with the dates in our data. First we need to combine all of the date and time attributes into a single character vector. In addition we need to separate out the hours and minutues. We can use the `paste` function to combine the year, doy, hour, and minute. Remember R will operate on entire vectors. Why do we use the `floor` function, what does it do? 
+Today we are going to use several functions in the *lubridate* package to work with the dates in our data. First we need to combine all of the date and time attributes into a single character vector. In addition we need to separate out the hours and minutues. We can use the `paste` function to combine the year, doy, hour, and minute. Remember R will operate on entire vectors. 
 
 ```{r, collapse = T}
 # create a character vector with date and time information
@@ -40,6 +47,8 @@ d <- paste(t_air$year,t_air$doy,floor(t_air$hour),(t_air$hour-floor(t_air$hour))
 # have a look at our new vector
 head(d)
 ```
+
+Before going any further take a moment to figure out exactly what we did to create our new character vector with date and time information. What two new functions did we use? What were our inputs? 
 
 Now we can use the `as_datetime` function to convert our character vector into a special kind of date object. Remember we use the `$` operator to add new variables (columns) to a dataframe.
 ```{r, collapse = T}
@@ -54,6 +63,7 @@ t_air$month <- month(t_air$dt)
 
 ```
 
+We used the `as_datetime` and `month` functions above. 
 Now we can use the functions from the dplyr package to aggregate our date to monthly values. In addition to these new functions, we'll be using a new operator `%>%` to send the output from one command right into the next, this is called *piping*.
 
 ```{r, collapse = T}
@@ -72,3 +82,14 @@ t_month <- t_air %>%
 head(t_month)
 ```
 
+
+For our assignment this week we will continue to work on data manipulation skills. You will be working in pairs this week. 
+
+1. Read in the netR.csv data file from the Arctic Data Center webpage (net radiation, as from Lab1). 
+
+2. Calculate *average daily* incoming shortwave radiation for each site (high- and low-density) and sensor height (1m and 8m). 
+(Hint - do you need to use the `as_datetime`, or `as_date` function?)
+
+3. Use the `plot`, `lines`, and `legend` functions to create a graph showing mean daily incoming shortwave radiation for the month of June 2017. The graph should have four lines, one for the 1m and 8m measurment at the high- and low-density sites. Be sure to label the axes appropriately and distinguish between the different sites and measurments heights. 
+
+Save your solutions as a single R script on your network folder 'lastname_lastname_lab3.R' in your lab folder on the network by next Friday.
