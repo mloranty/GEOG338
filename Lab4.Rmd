@@ -1,0 +1,35 @@
+---
+title: "Lab4"
+author: "Mike Loranty"
+date: "3/8/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This week we are going to branch out and work with some new types of data. We will be exploring eddy covariance data that measure fluxes of carbon dioxide, energy, and water, from our study sites in Siberia. However this data is a bit older, and was collected by some other researchers, so it might be a little trickier to use and understand. First, go to this link and have a look at the data; https://arcticdata.io/catalog/view/doi:10.18739/A26S1B. We are interested in the 'flux_siberia_OPP-0097439 data.csv' data file. We can copy the link, and read it in as usual, but as soon as you examine the data you should notice some problems. 
+
+
+```{r, eval = F}
+c <- read.csv("https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3Ae83680e9-0579-4b5d-87df-0665dc27cbc0",
+              header = T)
+```
+
+In order to get this data read in correctly you'll need to use the `skip`, and `na.strings` arguments in the `read.csv` function. It may help to download the csv file and have a look at the data in order to figure these issues out. 
+
+Be sure to have a look at the metadata on the Arctic Data Center webpage as well. You'll see that we have a number of new measurments, most importantly CO2 flux (NEE), Leatent Heat Flux (evapotranspiration), and Sensible Heat Flux (atmospheric heating). 
+
+We will work with this dataset for several lab periods. You may work on the assignment in pairs, but each person must submit their own lab assignment. 
+
+Your tasks for this week are as follows:
+
+1. Read in the flux data set from the Arctic Data Center, as outlined above. 
+
+2. Create a plot of CO2 flux vs. photosynthetically active radiation. Use the *export* button in the RStudio plot window to copy the graph, and then paste it into a word document. Below the graph provide an explanation of the patterns you see. Your explanation should include a discussion of what factors you think might be limiting in this ecosystem, and also an estimate of the maximum rate of photosynthesis. 
+
+3. Create two more graphs that illustrate relationships between variables of your choosing. This could be between two fluxes, or between fluxes and environmental variables. Past each graph in your word document, and provide a similar descriptive paragraph. 
+
+Submit your well documented and organized script, along with a file containing your graphs and discussion by the end of the day on Friday March 22. 
+
