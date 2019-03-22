@@ -21,6 +21,29 @@ Your tasks for this week are as follows:
 
 2. Conduct an analysis in R to answer your research question. Your analysis may include summary statistics or graphical analyses.  
 
-3. Write a brief 1-2 page report, that outlines your study. Your report should be organized similar to a conventional scientific study with introduction, methods, results, and discussion sections. Since this is a very short report your each section might be only a paragraph or two. Your results section should include *at least one graph*. 
+3. Write a brief 1-2 page report, that outlines your study. Your report should be organized similar to a conventional scientific study with introduction, methods, results, and discussion sections (brief info on these below). Since this is a very short report your each section might be only a paragraph or two. Your results section should include *at least one graph*. 
 
 Submit your well documented and organized script, along with a document file (e.g. MS Word) containing your report by the end of the day on Friday March 29. Note that it may be helpful to refer to previous labs to work with this data set. 
+
+
+
+
+
+
+
+##### Sections of a Scientific Research Paper
+
+1. **Introduction** This section contains relevant context and background information on the research topic and why it is important, and a clearly articulation of the research question and/or hypotheses.
+
+2. **Methods** This section provides a detailed description of the data and research methods used. The intent is to enable other researchers to understand and reproduce the research. Good code makes it easier to reproduce research!
+
+3. **Results** This section contains the data and analytical results of the study. Typically the results include a mixture of text, tables, and graphs. Note that there is no intepretation of the results in this section. 
+
+4. **Discussion** The results are intepreted in this section. This often includes an *explanation* of the results - why did they align with the hypotheses (or not!)? This section often includes discussion of the results in the context of results from other studies.
+
+
+
+
+
+
+
