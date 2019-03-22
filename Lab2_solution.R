@@ -25,7 +25,7 @@ unique(ld$sensorZ)
 #[1]  8 18 50
 
 #low density
-mean(ld[ld$year==2016 & ld$doy<213 & ld$doy>181 & ld$sensorZ==8,4],na.rm = T)
+mean(.ld[ld$year==2016 & ld$doy<213 & ld$doy>181 & ld$sensorZ==8,4],na.rm = T)
 #[1] 0.1666176
 mean(ld[ld$year==2016 & ld$doy<213 & ld$doy>181 & ld$sensorZ==18,4],na.rm = T)
 #[1] 0.2508058

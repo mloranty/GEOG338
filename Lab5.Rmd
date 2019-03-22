@@ -1,0 +1,26 @@
+---
+title: "Lab5"
+author: "Mike Loranty"
+date: "3/22/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+This week we'll continue to explore new data sets related to the hydrologic topics we're covering in class. Specifically, we will look at discharge data from the Arctic Great Rivers observatory. [You can read more about the project, and the rivers at this link](https://arcticgreatrivers.org/). The dataset we'll be using is on the [Arctic Data Center webpage](https://arcticdata.io/catalog/view/doi:10.18739/A21C1TF69). We'll use the 'Arctic GRO III Discharge_20190214.csv' file. 
+
+Here the link to that file; https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A7e964590-e354-41cd-92dc-f58928b63122
+
+This week we are not going to add any new aspects of coding, rather we will focus a bit more deeply on using the data to answer questions. 
+
+Your tasks for this week are as follows:
+
+1. Develop a research question and related hypothesis that you can test using the Arctic GRO Discharge data set. You should look at the Arctic GRO data and webpage to help. For example, you might ask if peak discharge is related to watershed size, and hypothesize that larger watersheds have higher peak discharge.   
+
+2. Conduct an analysis in R to answer your research question. Your analysis may include summary statistics or graphical analyses.  
+
+3. Write a brief 1-2 page report, that outlines your study. Your report should be organized similar to a conventional scientific study with introduction, methods, results, and discussion sections. Since this is a very short report your each section might be only a paragraph or two. Your results section should include *at least one graph*. 
+
+Submit your well documented and organized script, along with a document file (e.g. MS Word) containing your report by the end of the day on Friday March 29. Note that it may be helpful to refer to previous labs to work with this data set. 
