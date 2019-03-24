@@ -26,6 +26,7 @@ nr_day <- nr %>%
 # check out the new data frame
 head(nr_day)
 
+<<<<<<< HEAD
 # subset high-density date at 1m height for June 2017
 hd1 <- nr_day[nr_day$year == 2017 & nr_day$doy < 182 & nr_day$doy > 151 & nr_day$site == "hd" & nr_day$sensorZ == 100,]
 # subset high-density date at 8m height for June 2017
@@ -33,6 +34,15 @@ hd8 <- nr_day[nr_day$year == 2017 & nr_day$doy < 182 & nr_day$doy > 151 & nr_day
 # subset low-density date at 1m height for June 2017
 ld1 <- nr_day[nr_day$year == 2017 & nr_day$doy < 182 & nr_day$doy > 151 & nr_day$site == "ld" & nr_day$sensorZ == 100,]
 # subset low-density date at 8m height for June 2017
+=======
+#subset high-density date at 1m height for June 2017
+hd1 <- nr_day[nr_day$year == 2017 & nr_day$doy < 182 & nr_day$doy > 151 & nr_day$site == "hd" & nr_day$sensorZ == 100,]
+#subset high-density date at 8m height for June 2017
+hd8 <- nr_day[nr_day$year == 2017 & nr_day$doy < 182 & nr_day$doy > 151 & nr_day$site == "hd" & nr_day$sensorZ == 800,]
+#subset low-density date at 1m height for June 2017
+ld1 <- nr_day[nr_day$year == 2017 & nr_day$doy < 182 & nr_day$doy > 151 & nr_day$site == "ld" & nr_day$sensorZ == 100,]
+#subset low-density date at 8m height for June 2017
+>>>>>>> 8b37179cb2614410f76e58b2f3b642a3df803310
 ld8 <- nr_day[nr_day$year == 2017 & nr_day$doy < 182 & nr_day$doy > 151 & nr_day$site == "ld" & nr_day$sensorZ == 800,]
 
 # make a plot with the subsets for June 2017

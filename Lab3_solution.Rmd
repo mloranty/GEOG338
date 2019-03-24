@@ -12,11 +12,14 @@ knitr::opts_chunk$set(echo = TRUE)
 Here is my solution to Lab 3
 
 ```{r cars, eval = F}
+<<<<<<< HEAD
 # M. Loranty; 02/21/19
 # script to downlaod, temporally aggregate, and plot
 # net radiation data from high- and low-density forests
 # near Cherskiy in northeastern Siberia
 
+=======
+>>>>>>> 8b37179cb2614410f76e58b2f3b642a3df803310
 #load required packages
 library(dplyr)
 library(lubridate)
