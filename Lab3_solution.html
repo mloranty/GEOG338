@@ -192,15 +192,21 @@ $(document).ready(function () {
 
 
 <p>Here is my solution to Lab 3</p>
-<pre class="r"><code>#load required packages
+<pre class="r"><code># M. Loranty; 02/21/19
+# script to downlaod, temporally aggregate, and plot
+# net radiation data from high- and low-density forests
+# near Cherskiy in northeastern Siberia
+
+#load required packages
 library(dplyr)
 library(lubridate)
 
+#Q1
 #read the csv file directly from Arctic Data Center repository
 nr &lt;- read.csv(&quot;https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A229ad93b-ddfe-4e3f-a32d-d8e8e17eca4d&quot;,
                header = T)
 
-
+#Q2
 # create a new object called t_month that is identical to our t_air dataframe and pipe it to the next line
 nr_day &lt;- nr %&gt;%
   
@@ -212,9 +218,7 @@ nr_day &lt;- nr %&gt;%
             sw.sd = sd(SRUp,na.rm=T),
             n_obs &lt;- n())
 
-# check out the new data frame
-head(nr_day)
-
+#Q3
 # subset high-density date at 1m height for June 2017
 hd1 &lt;- nr_day[nr_day$year == 2017 &amp; nr_day$doy &lt; 182 &amp; nr_day$doy &gt; 151 &amp; nr_day$site == &quot;hd&quot; &amp; nr_day$sensorZ == 100,]
 # subset high-density date at 8m height for June 2017

@@ -12,23 +12,21 @@ knitr::opts_chunk$set(echo = TRUE)
 Here is my solution to Lab 3
 
 ```{r cars, eval = F}
-<<<<<<< HEAD
 # M. Loranty; 02/21/19
 # script to downlaod, temporally aggregate, and plot
 # net radiation data from high- and low-density forests
 # near Cherskiy in northeastern Siberia
 
-=======
->>>>>>> 8b37179cb2614410f76e58b2f3b642a3df803310
 #load required packages
 library(dplyr)
 library(lubridate)
 
+#Q1
 #read the csv file directly from Arctic Data Center repository
 nr <- read.csv("https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3A229ad93b-ddfe-4e3f-a32d-d8e8e17eca4d",
                header = T)
 
-
+#Q2
 # create a new object called t_month that is identical to our t_air dataframe and pipe it to the next line
 nr_day <- nr %>%
   
@@ -40,9 +38,7 @@ nr_day <- nr %>%
             sw.sd = sd(SRUp,na.rm=T),
             n_obs <- n())
 
-# check out the new data frame
-head(nr_day)
-
+#Q3
 # subset high-density date at 1m height for June 2017
 hd1 <- nr_day[nr_day$year == 2017 & nr_day$doy < 182 & nr_day$doy > 151 & nr_day$site == "hd" & nr_day$sensorZ == 100,]
 # subset high-density date at 8m height for June 2017
