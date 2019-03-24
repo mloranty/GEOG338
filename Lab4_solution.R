@@ -1,10 +1,6 @@
 
 
-c <- read.csv("https://arcticdata.io/metacat/d1/mn/v2/object/urn%3Auuid%3Ae83680e9-0579-4b5d-87df-0665dc27cbc0",header = T,skip = 1,na.strings = "N/A")
 
-
-# plot CO2 flux vs. PAR to examine light response curve
-plot(c$PAR.umol.m2.s.,c$CO2.flux..umol.m2.s.)
 
 flux <- as.data.frame(cbind(c$PAR.umol.m2.s.,-c$CO2.flux..umol.m2.s.))
 names(flux) <- c("par","co2")

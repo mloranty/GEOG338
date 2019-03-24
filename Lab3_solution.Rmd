@@ -1,3 +1,17 @@
+---
+title: "Lab3_solution"
+author: "Mike Loranty"
+date: "3/24/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Here is my solution to Lab 3
+
+```{r cars, eval = F}
 # M. Loranty; 02/21/19
 # script to downlaod, temporally aggregate, and plot
 # net radiation data from high- and low-density forests
@@ -51,5 +65,8 @@ lines(hd8$doy, hd8$sw,lty=1,lwd=2,col="red")
 # add a legend to the plot
 legend("bottom",c("High Density","Low Density"),fill=c("red", "black"),bty="n")
 
+
+
+```
 
 
