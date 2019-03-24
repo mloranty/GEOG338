@@ -23,7 +23,7 @@ Your tasks for this week are as follows:
 
 3. Write a brief 1-2 page report, that outlines your study. Your report should be organized similar to a conventional scientific study with introduction, methods, results, and discussion sections (brief info on these below). Since this is a very short report your each section might be only a paragraph or two. Your results section should include *at least one graph*. 
 
-Submit your well documented and organized script, along with a document file (e.g. MS Word) containing your report by the end of the day on Friday March 29. Note that it may be helpful to refer to previous labs to work with this data set. 
+Submit your well documented and organized script, along with a document file (e.g. MS Word) containing your report by the end of the day on Friday April 5. Note that it may be helpful to refer to previous labs to work with this data set. 
 
 
 
